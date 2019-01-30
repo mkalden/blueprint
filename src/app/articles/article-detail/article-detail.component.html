@@ -1,0 +1,38 @@
+<div class="top-container">
+  <ng-container *ngIf="status === 'read' && item">
+    <div class="action-buttons">
+      <button (click)=" goBack()" color="accent" mat-flat-button>Back to Articles</button>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center none">
+      <mat-card class="article-detail"
+                fxFlex.gt-xs="0 1 calc(100% - 32px)"
+                fxFlex.lt-sm="100%">
+        <mat-card-header>
+          <mat-card-title>{{ item?.article?.title }}</mat-card-title>
+          <mat-card-subtitle>
+            {{ item?.article?.authorName }} | {{ item?.time.seconds * 1000 | date: shortDate }}
+          </mat-card-subtitle>
+        </mat-card-header>
+        <img [src]="item?.article?.imageUrl" alt="" mat-card-image>
+        <mat-card-content>
+          <p>{{ item?.article?.body }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button (click)="goBack()" color="primary" mat-button>Go Back</button>
+          <button (click)="onEdit()" *ngIf="true"
+                  color="warn"
+                  mat-button>Edit Article
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </ng-container>
+
+  <app-article-edit (updated)="onUpdated($event)"
+                    *ngIf="status === 'edit' && item"
+                    [articleId]="articleId"
+                    [item]="item"
+                    [user]="user">
+  </app-article-edit>
+
+</div>
