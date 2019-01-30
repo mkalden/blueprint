@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {
   MatButtonModule,
   MatCardModule,
+  MatGridListModule,
   MatIconModule,
   MatInputModule,
   MatListModule,
@@ -28,6 +29,7 @@ import { LayoutModule } from '@angular/cdk/layout';
     MatCardModule,
     MatTabsModule,
     MatSnackBarModule,
+    MatGridListModule,
     // MatExpansionModule,
     FlexLayoutModule
   ],
@@ -43,6 +45,7 @@ import { LayoutModule } from '@angular/cdk/layout';
     MatCardModule,
     MatTabsModule,
     MatSnackBarModule,
+    MatGridListModule,
     // MatExpansionModule,
     FlexLayoutModule
   ]

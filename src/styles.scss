@@ -10,7 +10,12 @@ body {
 }
 
 .top-container {
-  margin-top: 15px;
+  margin-top: 16px;
+}
+
+.content {
+  margin-left: 16px;
+  margin-right: 16px;
 }
 
 ngx-auth-firebaseui-providers {
@@ -30,4 +35,20 @@ ngx-auth-firebaseui-providers {
 
 ngx-auth-firebaseui, ngx-auth-firebaseui-user {
   width: 90%;
+}
+
+.articles-list {
+  .mat-card {
+    &-image {
+      background: lightblue;
+    }
+
+    &-header-text {
+      margin: 0;
+    }
+
+    &-content {
+      margin-bottom: 0;
+    }
+  }
 }

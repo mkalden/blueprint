@@ -1,0 +1,23 @@
+@import "../../../assets/styles/variables";
+
+.articles-list {
+  margin-left: 16px;
+}
+
+.article {
+  margin-bottom: 16px;
+}
+
+.create-button {
+  margin: 24px 16px;
+}
+
+.no-articles {
+  margin-left: 16px;
+}
+
+@media screen and (max-width: $xs) {
+  .articles-list {
+    margin-left: 0;
+  }
+}

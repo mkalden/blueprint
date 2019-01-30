@@ -1,17 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { AuthService } from '../../user/auth.service';
-import { User } from '../../shared/interfaces/user';
 import { Router } from '@angular/router';
+import { UserService } from '../../user/user.service';
+import { User } from '../../shared/interfaces/user';
 
 @Component({
   selector: 'app-toolbar',
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.scss']
 })
-export class ToolbarComponent {
+export class ToolbarComponent implements OnInit {
   public user: Observable<User>;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
@@ -21,10 +21,17 @@ export class ToolbarComponent {
 
   constructor(
     private breakpointObserver: BreakpointObserver,
-    public authService: AuthService,
+    public userService: UserService,
     private router: Router
   ) {
   }
+
+  ngOnInit(): void {
+    if (this.user) {
+      this.router.navigate(['/articles']);
+    }
+  }
+
 
   public toSignup(): void {
     this.router.navigate(['user/login']);
@@ -35,7 +42,7 @@ export class ToolbarComponent {
   }
 
   public onLogout(): void {
-    this.authService.logout();
+    this.userService.logout();
     this.router.navigate(['/']);
   }
 

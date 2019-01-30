@@ -17,6 +17,7 @@ export class AuthService {
     private snackBar: MatSnackBar
   ) {
     this.user$ = this.afAuth.authState;
+    console.log('this.user$', this.user$);
   }
 
   public logout(): void {

@@ -7,7 +7,8 @@
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
       <a [routerLink]="['/']" mat-list-item>Home</a>
-      <a [routerLink]="['/postings']" mat-list-item>Postings</a>
+      <a *ngIf="(userService.user$ | async)?.uid" [routerLink]="['/articles']" mat-list-item>Articles</a>
+      <a *ngIf="!(userService.user$ | async)?.uid" [routerLink]="['/user/login']" mat-list-item>Login</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -20,24 +21,23 @@
         type="button">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>blueprint App</span>
+      <span>Blueprint App</span>
       <span class="spacer"></span>
 
       <span class="user-buttons">
-        <button (click)="toProfile()" *ngIf="(authService.user$ | async)?.uid" mat-icon-button>
-          <img *ngIf="(authService.user$ | async)?.photoURL" [src]="(authService.user$ | async)?.photoURL" alt=""
+        <button (click)="toProfile()" *ngIf="(userService.user$ | async)?.uid" mat-icon-button>
+          <img *ngIf="(userService.user$ | async)?.photoURL" [src]="(userService.user$ | async)?.photoURL" alt=""
                height="28px" width="28px">
-          <mat-icon *ngIf="!(authService.user$ | async)?.photoURL">account_box</mat-icon>
+          <mat-icon *ngIf="!(userService.user$ | async)?.photoURL">account_box</mat-icon>
         </button>
-        <button (click)="onLogout()" *ngIf="(authService.user$ | async)?.uid" mat-icon-button>
+        <button (click)="onLogout()" *ngIf="(userService.user$ | async)?.uid" mat-icon-button>
           <mat-icon>exit_to_app</mat-icon>
         </button>
-        <button (click)="toSignup()" *ngIf="!(authService.user$ | async)?.uid" mat-icon-button>
+        <button (click)="toSignup()" *ngIf="!(userService.user$ | async)?.uid" mat-icon-button>
           <mat-icon>settings_power</mat-icon>
         </button>
       </span>
     </mat-toolbar>
-    <!-- Add Content Here -->
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

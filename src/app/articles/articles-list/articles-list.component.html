@@ -1,0 +1,32 @@
+<div class="top-container">
+  <div *ngIf="isAuthenticated()" class="create-button">
+    <a color="accent" mat-flat-button routerLink="create">Create new article</a>
+  </div>
+  <div
+    *ngIf="articles?.length;"
+    class="articles-list"
+    fxLayout="row wrap"
+    fxLayout.lt-sm="column"
+    fxLayoutAlign="flex-start"
+    fxLayoutGap="16px">
+    <ng-container *ngFor="let item of articles">
+      <mat-card class="article"
+                fxFlex="0 1 calc(33.3% - 16px)"
+                fxFlex.lt-md="0 1 calc(50% - 16px)"
+                fxFlex.lt-sm="100%"
+                fxLayout="column" fxLayoutAlign="space-between stretch">
+        <mat-card-header>
+          <mat-card-title>{{ item.article.title | truncateText: 20 }}</mat-card-title>
+          <mat-card-subtitle>{{ item.article.authorName }}</mat-card-subtitle>
+        </mat-card-header>
+        <img [src]="item.article.imageUrl" alt="" mat-card-image>
+        <mat-card-content>
+          <p>{{ item.article.body | truncateText: 150 }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button (click)="onRead(item.id)" color="primary" mat-button>Read More ...</button>
+        </mat-card-actions>
+      </mat-card>
+    </ng-container>
+  </div>
+</div>

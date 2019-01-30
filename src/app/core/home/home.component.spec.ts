@@ -19,7 +19,8 @@ describe('HomeComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should have a headline', () => {
+    const elm = fixture.debugElement.nativeElement;
+    expect(elm.querySelector('h3')).not.toBeNull();
   });
 });

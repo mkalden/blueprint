@@ -25,7 +25,7 @@ export class LoginComponent {
     this.snackBar.open(`Welcome ${name}!`, 'Ok', {
       duration: 3000
     });
-    this.router.navigate(['postings']);
+    this.router.navigate(['articles']);
   }
 
 }
