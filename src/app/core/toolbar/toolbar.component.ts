@@ -32,7 +32,6 @@ export class ToolbarComponent implements OnInit {
     }
   }
 
-
   public toSignup(): void {
     this.router.navigate(['user/login']);
   }

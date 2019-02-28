@@ -46,12 +46,6 @@ describe('ToolbarComponent', () => {
     expect(index).toBeGreaterThan(-1);
   });
 
-  it('should have a link to articles page', () => {
-    const de = fixture.debugElement.queryAll(By.directive(RouterLinkWithHref));
-    const index = de.findIndex(i => i.properties['href'] === '/articles');
-    expect(index).toBeGreaterThan(-1);
-  });
-
   it('toSignUp() should redirect to signup page', () => {
     const spy = spyOn(router, 'navigate');
     component.toSignup();

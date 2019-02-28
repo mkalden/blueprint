@@ -4,7 +4,7 @@ import { HomeComponent } from './core/home/home.component';
 import { AuthGuardService } from './shared/services/auth-guard.service';
 import { ErrorPageComponent } from './core/error-page/error-page.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   {path: '', component: HomeComponent, pathMatch: 'full'},
   {path: 'error-page', component: ErrorPageComponent},
   {path: 'user', loadChildren: './user/user.module#UserModule'},
